@@ -43,6 +43,23 @@ body {
   font-size: 1rem;
 }
 
+.source-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.source-note a {
+  color: var(--accent-2);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(184, 225, 255, 0.5);
+}
+
+.source-note a:hover {
+  color: #d8f0ff;
+  border-bottom-color: rgba(216, 240, 255, 0.85);
+}
+
 .layout {
   display: grid;
   grid-template-columns: 1.6fr 0.8fr;
