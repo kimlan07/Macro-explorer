@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How the City Wakes Up</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>How the City Wakes Up</h1>
+        <p class="subtitle">
+          An animated view of how subway activity spreads across New York over a day. Station circles expand and brighten with hourly ridership across the city.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="viz-panel">
+        <div class="viz-header">
+          <div class="day-toggle top-day-toggle">
+            <button class="day-btn active" data-day="Weekday">Weekday</button>
+            <button class="day-btn" data-day="Saturday">Saturday</button>
+            <button class="day-btn" data-day="Sunday">Sunday</button>
+          </div>
+
+          <div class="timeline-controls top-scrubber">
+            <span class="label scrubber-time-label">Time</span>
+            <button id="play-btn">Play</button>
+            <input id="hour-slider" type="range" min="0" max="23" step="1" value="6" />
+            <span id="slider-hour-label">06:00</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="borough-toggle">
+            <span class="label">Borough</span>
+            <button class="borough-btn active" data-borough="All">All</button>
+            <button class="borough-btn" data-borough="Manhattan">Manhattan</button>
+            <button class="borough-btn" data-borough="Brooklyn">Brooklyn</button>
+            <button class="borough-btn" data-borough="Queens">Queens</button>
+            <button class="borough-btn" data-borough="Bronx">Bronx</button>
+          </div>
+        </div>
+
+        <div id="chart-container">
+          <svg id="chart"></svg>
+          <div id="tooltip" class="tooltip hidden"></div>
+          <div class="zoom-hint">⟳ Scroll to zoom &nbsp;·&nbsp; Drag to pan</div>
+          <button id="reset-zoom-btn">Reset Zoom</button>
+        </div>
+
+        <div class="global-timeline-card">
+          <div class="global-timeline-header">
+            <h3>Citywide Ridership Timeline</h3>
+            <span id="global-timeline-context" class="global-timeline-context">Weekday · All boroughs</span>
+          </div>
+          <svg id="global-timeline-chart" aria-label="Citywide ridership by hour"></svg>
+        </div>
+      </section>
+
+      <aside class="info-panel">
+        <div class="panel-card narrative-card">
+          <div class="narrative-header">
+            <h2>City Pulse</h2>
+            <span class="narrative-badge">Live</span>
+          </div>
+          <p id="narrative-title" class="narrative-title">Early morning ramp-up</p>
+          <p id="narrative-text" class="narrative-text">
+            Service is coming online and early riders begin to appear across key transfer points.
+          </p>
+        </div>
+
+        <div class="panel-card">
+          <h2>Selected Station</h2>
+          <div id="station-details">
+            <p class="muted">Click a station to view details.</p>
+          </div>
+          <div id="station-profile" class="station-profile">
+            <svg id="station-profile-chart" aria-label="Station hourly ridership chart"></svg>
+            <div id="station-profile-empty" class="station-profile-empty">
+              Select a station to see hourly ridership profile.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <h2>Legend</h2>
+          <div class="legend-row">
+            <div class="legend-dot small"></div>
+            <span>Lower ridership</span>
+          </div>
+          <div class="legend-row">
+            <div class="legend-dot medium"></div>
+            <span>Medium ridership</span>
+          </div>
+          <div class="legend-row">
+            <div class="legend-dot large"></div>
+            <span>Higher ridership</span>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
